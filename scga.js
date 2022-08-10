@@ -1,9 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(){
-	var script = document.createElement("script");
-	script.innerHTML = 'var element = document.querySelector("body > div:last-of-type");element.parentNode.removeChild(element);';
-	document.body.appendChild(script);
-});
-
 var sc_project=10093404; 
 var sc_invisible=1; 
 var sc_security="ad17771f"; 
