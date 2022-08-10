@@ -103,11 +103,3 @@ input {
 	text-align: center;
 	mix-blend-mode: normal;
 }
-
-body div:last-child img {
-	display: none !important;
-}
-
-body div:last-child {
-	z-index: -99999999 !important;
-}
