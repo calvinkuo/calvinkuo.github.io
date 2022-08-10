@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Korean Romanization Converter</title>
+		<link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/print.css" media="print" />
+		<link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/favicons/favicon-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/favicons/favicon-160x160.png" sizes="160x160">
+		<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+		<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+		<style>textarea {margin: auto; margin: 1em} input[type="submit"] {margin: auto}</style>
+	</head>
+	<body>
+		<header>
+			<h1>Korean Romanization</h1>
+		</header>
+		<form class="content" onsubmit="romanize(); return false;">
+			<noscript>Please enable JavaScript.</noscript>
+			<label>
+				<input id="cb-noun" type="checkbox" value="Noun" onchange="romanize();" />
+				Noun
+			</label>
+			<label>
+				<input id="cb-proper" type="checkbox" value="Proper noun" onchange="romanize();" />
+				Proper noun
+			</label>
+			<label>
+				<input id="cb-person" type="checkbox" value="Name" onchange="romanize();" />
+				Name
+			</label>
+			<label>
+				<input id="cb-translit" type="checkbox" value="Transliteration" onchange="romanize();" />
+				Transliteration
+			</label>
+			<label>
+				<input id="cb-syllables" type="checkbox" value="Syllables" onchange="romanize();" />
+				Syllables
+			</label>
+			<br />
+			<textarea id="ko-text" autocomplete="off" autofocus="true" cols="40" rows="10" onchange="romanize();" ></textarea>
+			<br />
+			<textarea id="rom-text" readonly="true" spellcheck="false" cols="40" rows="10" ></textarea>
+			<input type="submit" style="visibility:hidden; position:absolute"/>
+		</form>
+		<script src="ko.js"></script>
+		<script type="text/javascript" src="/scga.js"></script>
+		<noscript>
+			<div class="statcounter">
+				<a title="web analytics" href="http://statcounter.com/" target="_blank">
+					<img class="statcounter" src="http://c.statcounter.com/10093404/0/ad17771f/1/" alt="web analytics" />
+				</a>
+			</div>
+		</noscript>
+	</body>
+</html>

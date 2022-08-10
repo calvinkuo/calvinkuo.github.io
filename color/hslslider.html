@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Color Page - HSL Slider</title>
+		<link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/print.css" media="print" />
+		<link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/favicons/favicon-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/favicons/favicon-160x160.png" sizes="160x160">
+		<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+		<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+		<script src="hsl.js" async="async"></script>
+	</head>
+	<body onload="colorize();">
+		<header>
+			<h1>Color Page</h1>
+		</header>
+		<div class="content">
+			This page lets you test overlapping color mixing with opacity support. <noscript>JavaScript must be enabled.</noscript> This has been tested in Google Chrome, Mozilla Firefox, Internet Explorer, Opera, and Safari.
+			<div class="note">This page requires support for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode">background-blend-mode</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode">mix-blend-mode</a> for full functionality. You can check if your browser is compatible <a href="http://caniuse.com/#feat=css-mixblendmode,css-backgroundblendmode">here</a>.</div>
+			<ul class="hl">
+				<li><a href="rgbslider.html">RGB Slider</a></li>
+				<li><a href="rgbtextbox.html">RGB Text Box</a></li>
+				<li><a href="hsltextbox.html">HSL Text Box</a></li>
+			</ul>
+		</div>
+		<form autocomplete="off" oninput="colorize();" onchange="colorize();" onsubmit="return false;">
+			<table>
+				<tr>
+					<th scope="row">Front color</th>
+					<td><label for="H1">H:</label></td>
+					<td><input class="colorInput" id="H1" type="range" min="0" max="360" step="1" value="120" /></td>
+					<td><label for="S1">S:</label></td>
+					<td><input class="colorInput" id="S1" type="range" min="0" max="100" step="1" value="100" /></td>
+					<td><label for="L1">L:</label></td>
+					<td><input class="colorInput" id="L1" type="range" min="0" max="100" step="1" value="50" /></td>
+					<td><label for="A1">A:</label></td>
+					<td><input class="colorInput" id="A1" type="range" min="0" max="1" step="0.01" value="0.5" /></td>
+				</tr>
+				<tr>
+					<th scope="row">Back color</th>
+					<td><label for="H2">H:</label></td>
+					<td><input class="colorInput" id="H2" type="range" min="0" max="360" step="1" value="240" /></td>
+					<td><label for="S2">S:</label></td>
+					<td><input class="colorInput" id="S2" type="range" min="0" max="100" step="1" value="100" /></td>
+					<td><label for="L2">L:</label></td>
+					<td><input class="colorInput" id="L2" type="range" min="0" max="100" step="1" value="25" /></td>
+					<td><label for="A2">A:</label></td>
+					<td><input class="colorInput" id="A2" type="range" min="0" max="1" step="0.01" value="0.5" /></td>
+				</tr>
+				<tr>
+					<th scope="row">BG color</th>
+					<td><label for="HB">H:</label></td>
+					<td><input class="colorInput" id="HB" type="range" min="0" max="360" step="1" value="0" /></td>
+					<td><label for="SB">S:</label></td>
+					<td><input class="colorInput" id="SB" type="range" min="0" max="100" step="1" value="0" /></td>
+					<td><label for="LB">L:</label></td>
+					<td><input class="colorInput" id="LB" type="range" min="0" max="100" step="1" value="100" /></td>
+					<td><label for="AB">A:</label></td>
+					<td><input class="colorInput" id="AB" type="range" min="0" max="1" step="0.01" value="1" /></td>
+				</tr>
+				<tr id="mixing">
+					<th scope="row"><label for="mix">Mixing</label></th>
+					<td colspan="8">
+						<select id="mix">
+							<option value="normal">normal</option>
+							<option value="multiply">multiply</option>
+							<option value="screen">screen</option>
+							<option value="overlay">overlay</option>
+							<option value="darken">darken</option>
+							<option value="lighten">lighten</option>
+							<option value="color-dodge">color-dodge</option>
+							<option value="color-burn">color-burn</option>
+							<option value="hard-light">hard-light</option>
+							<option value="soft-light">soft-light</option>
+							<option value="difference">difference</option>
+							<option value="exclusion">exclusion</option>
+							<option value="hue">hue</option>
+							<option value="saturation">saturation</option>
+							<option value="color">color</option>
+							<option value="luminosity">luminosity</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<!--
+			<div class="colorize">
+				<input id="test" type="submit" value="Colorize!" onclick="colorize();"/>
+			</div>
+			-->
+		</form>
+		
+		<div id="back" class="square">Back Square</div>
+		<div id="front" class="square">Front Square</div>
+		
+		<footer>
+			<ul class="hl">
+				<li><a href="/">Home</a></li>
+				<li><a href="/sitemap.html">Site Map</a></li>
+			</ul>
+		</footer>
+		
+		<script type="text/javascript" src="/scga.js"></script>
+		<noscript>
+			<div class="statcounter">
+				<a title="web analytics" href="http://statcounter.com/" target="_blank">
+					<img class="statcounter" src="http://c.statcounter.com/10093404/0/ad17771f/1/" alt="web analytics" />
+				</a>
+			</div>
+		</noscript>
+	</body>
+</html>
